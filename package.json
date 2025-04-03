@@ -7,11 +7,12 @@
   },
   "keywords": [],
   "author": "",
-  "type": "module",
   "license": "ISC",
+  "type": "module",
   "description": "",
   "devDependencies": {
     "@types/express": "^5.0.1",
+    "@types/jsdom": "^21.1.7",
     "typescript": "^5.8.2"
   },
   "dependencies": {
