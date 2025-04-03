@@ -12,10 +12,12 @@ export function extractLaptopData(item: Element): LaptopDataI {
     return element?.textContent?.trim() || undefined;
   };
 
+  const fullTitle =
+    item.querySelector(".title")?.getAttribute("title")?.trim() || undefined;
   const img = item.querySelector(".image")?.getAttribute("src");
 
   return {
-    title: getSafeText(".title"),
+    title: fullTitle,
     price: getSafeText(".price"),
     description: getSafeText(".description"),
     imgUrl: img ? `https://webscraper.io${img}` : null,
