@@ -1,11 +1,11 @@
 import express from "express";
-import { fetchAllLaptops } from "./scraper.js";
+import { getLenovoLaptops } from "./scraper.js";
 
 const app = express();
 const port = 3000;
 
 app.get("/laptops", async (_, res) => {
-  const data = await fetchAllLaptops()
+  const data = await getLenovoLaptops()
     .then((data) => {
       console.log(`Dados carregados: ${data.length} laptops`);
       return data;

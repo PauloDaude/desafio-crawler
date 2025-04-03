@@ -1,11 +1,24 @@
 import { JSDOM } from "jsdom";
 import axios from "axios";
-import { extractLaptopData, LaptopData } from "./scraper-utils.js";
+import {
+  extractLaptopData,
+  LaptopDataI,
+  orderByPrice,
+} from "./scraper-utils.js";
 
 const BASE_URL =
   "https://webscraper.io/test-sites/e-commerce/static/computers/laptops";
 
-export async function fetchAllLaptops(page = 1, allLaptops: LaptopData[] = []) {
+export async function getLenovoLaptops() {
+  const allLaptops = await fetchAllLaptops();
+  const lenovoLaptops = allLaptops.filter((laptop) =>
+    laptop.title!.toLowerCase().includes("lenovo"),
+  );
+
+  return orderByPrice(lenovoLaptops);
+}
+
+async function fetchAllLaptops(page = 1, allLaptops: LaptopDataI[] = []) {
   try {
     const url = `${BASE_URL}?page=${page}`;
 
